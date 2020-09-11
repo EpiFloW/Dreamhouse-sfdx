@@ -40,7 +40,7 @@ code-testing:
     stage: code-testing
     script:
         # Authenticate to the Dev Hub using the server key
-        - sfdx force:auth:jwt:grant --setdefaultdevhubusername --clientid $SF_CONSUMER_KEY --jwtkeyfile assets/server.key --username $SF_USERNAME
+        - sfdx force:auth:jwt:grant --setdefaultdevhubusername --clientid 3MVG9SOw8KERNN0.f2hs.1yNSgYxI59AkUuy9uqwJYneFD22IcZUU8zAhQ8Asc6pHmst1hdVHnerEsy6_2VCv --jwtkeyfile assets/server.key --username maisonnave.florian@cunning-moose-ax2re1.com
         # Create scratch org
         - sfdx force:org:create --setdefaultusername --definitionfile config/project-scratch-def.json --wait 10 --durationdays 7
         - sfdx force:org:display
@@ -124,8 +124,8 @@ app-deploy:
         - export SCRATCH_ORG_USERNAME=`cat ./SCRATCH_ORG_USERNAME.TXT`
         - echo $SCRATCH_ORG_USERNAME
         # Authenticate with your playground or sandbox environment
-        - sfdx force:auth:jwt:grant --setdefaultdevhubusername --clientid $SF_CONSUMER_KEY --jwtkeyfile assets/server.key --username $SF_USERNAME
-        - sfdx force:config:set defaultusername=$SF_USERNAME
+        - sfdx force:auth:jwt:grant --setdefaultdevhubusername --clientid 3MVG9SOw8KERNN0.f2hs.1yNSgYxI59AkUuy9uqwJYneFD22IcZUU8zAhQ8Asc6pHmst1hdVHnerEsy6_2VCv --jwtkeyfile assets/server.key --username maisonnave.florian@cunning-moose-ax2re1.com
+        - sfdx force:config:set defaultusername=maisonnave.florian@cunning-moose-ax2re1.com
         # Delete Scratch Org that you were inspecting from your browser
         - sfdx force:data:record:delete --sobjecttype ScratchOrgInfo --where "SignupUsername='$SCRATCH_ORG_USERNAME'"
         # Read the package version id from file created in prior stage
